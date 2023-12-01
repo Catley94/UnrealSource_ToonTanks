@@ -27,6 +27,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;
@@ -37,5 +40,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Config")
 	float CameraDistance = 300.f;
 
+	void Move(float Value);
 	
 };
