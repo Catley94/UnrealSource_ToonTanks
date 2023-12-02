@@ -49,8 +49,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,  meta = (AllowPrivateAccess = "true"), Category = "Components")
 	USceneComponent* ProjectileSpawnPoint;
 
-	UPROPERTY(EditAnywhere, Category = "Config")
-	float TankSpeed = 400.f;
+	
 
 	
 	

@@ -40,6 +40,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Config")
 	float CameraDistance = 300.f;
 
+	UPROPERTY(EditAnywhere, Category = "Config")
+	float TankSpeed = 400.f;
+	
 	void Move(float Value);
 	
 };
