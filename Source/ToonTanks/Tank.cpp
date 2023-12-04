@@ -20,6 +20,17 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController>(GetController());
+
+	DrawDebugSphere(
+		GetWorld(),
+		GetActorLocation() + FVector(0.f, 0.f, 200.f),
+		100.f,
+		12,
+		FColor::Blue,
+		true,
+		30.f);
 	
 }
 
@@ -27,6 +38,21 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if(PlayerControllerRef != nullptr)
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
+		FVector HitLocation = HitResult.ImpactPoint;
+
+		DrawDebugSphere(
+		GetWorld(),
+		HitResult.ImpactPoint,
+		100.f,
+		12,
+		FColor::Blue,
+		false,
+		-1.f);
+	}
 }
 
 // Called to bind functionality to input
@@ -45,13 +71,13 @@ void ATank::Move(float Value)
 	FVector DeltaLocation = FVector::ZeroVector;
 	// X * DeltaTime * Speed
 	DeltaLocation.X = Value * TankSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
-	AddActorLocalOffset(DeltaLocation);
+	AddActorLocalOffset(DeltaLocation, true);
 }
 
 void ATank::Turn(float Value)
 {
     FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation.Yaw = Value * TankRotationSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
-	AddActorLocalRotation(DeltaRotation);
+	AddActorLocalRotation(DeltaRotation, true);
 }
 

@@ -28,12 +28,6 @@ public:
 	int32 EditInstanceOnlyInt32 = 52;
 
 	
-	
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-	
 private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Components")
@@ -48,13 +42,5 @@ private:
 	//meta = (AllowPrivateAccess = "true") is not needed but here for reference of learning purposes
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,  meta = (AllowPrivateAccess = "true"), Category = "Components")
 	USceneComponent* ProjectileSpawnPoint;
-
 	
-
-	
-	
-	
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;	
 };

@@ -49,5 +49,7 @@ private:
 	void Move(float Value);
 	
 	void Turn(float Value);
+
+	APlayerController* PlayerControllerRef;
 	
 };
