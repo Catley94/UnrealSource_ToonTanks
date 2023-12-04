@@ -22,15 +22,6 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerControllerRef = Cast<APlayerController>(GetController());
-
-	DrawDebugSphere(
-		GetWorld(),
-		GetActorLocation() + FVector(0.f, 0.f, 200.f),
-		100.f,
-		12,
-		FColor::Blue,
-		true,
-		30.f);
 	
 }
 
@@ -44,14 +35,14 @@ void ATank::Tick(float DeltaTime)
 		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
 		FVector HitLocation = HitResult.ImpactPoint;
 
-		DrawDebugSphere(
-		GetWorld(),
-		HitResult.ImpactPoint,
-		100.f,
-		12,
-		FColor::Blue,
-		false,
-		-1.f);
+		// DrawDebugSphere(
+		// GetWorld(),
+		// HitResult.ImpactPoint,
+		// 100.f,
+		// 12,
+		// FColor::Blue,
+		// false,
+		// -1.f);
 
 		RotateTurret(HitLocation);
 	}
