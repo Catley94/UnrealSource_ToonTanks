@@ -43,6 +43,11 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Config")
 	float TankSpeed = 400.f;
 	
+	UPROPERTY(EditAnywhere, Category = "Config")
+	float TankRotationSpeed = 100.f;
+	
 	void Move(float Value);
+	
+	void Turn(float Value);
 	
 };

@@ -35,6 +35,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 	
 }
 
@@ -45,5 +46,12 @@ void ATank::Move(float Value)
 	// X * DeltaTime * Speed
 	DeltaLocation.X = Value * TankSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalOffset(DeltaLocation);
+}
+
+void ATank::Turn(float Value)
+{
+    FRotator DeltaRotation = FRotator::ZeroRotator;
+	DeltaRotation.Yaw = Value * TankRotationSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
+	AddActorLocalRotation(DeltaRotation);
 }
 
