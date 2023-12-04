@@ -52,6 +52,8 @@ void ATank::Tick(float DeltaTime)
 		FColor::Blue,
 		false,
 		-1.f);
+
+		RotateTurret(HitLocation);
 	}
 }
 

@@ -27,6 +27,9 @@ public:
 	UPROPERTY(EditInstanceOnly)
 	int32 EditInstanceOnlyInt32 = 52;
 
+protected:
+
+	void RotateTurret(FVector LookAtTarget);	
 	
 private:
 
