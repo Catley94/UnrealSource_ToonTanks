@@ -74,3 +74,8 @@ void ATank::Turn(float Value)
 	AddActorLocalRotation(DeltaRotation, true);
 }
 
+void ATank::OnTakeAnyDamage()
+{
+	UE_LOG(LogTemp, Warning, TEXT("DAMAGE %s"), *GetName());
+}
+

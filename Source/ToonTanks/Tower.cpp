@@ -63,4 +63,9 @@ void ATower::CheckFireCondition()
 	}
 }
 
+void ATower::OnTakeAnyDamage()
+{
+	UE_LOG(LogTemp, Warning, TEXT("DAMAGE %s"), *GetName());
+}
+
 
