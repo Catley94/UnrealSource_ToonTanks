@@ -27,9 +27,13 @@ public:
 	UPROPERTY(EditInstanceOnly)
 	int32 EditInstanceOnlyInt32 = 52;
 
+	void Fire();
+	
 protected:
 
 	void RotateTurret(FVector LookAtTarget);	
+
+	
 	
 private:
 
@@ -45,5 +49,7 @@ private:
 	//meta = (AllowPrivateAccess = "true") is not needed but here for reference of learning purposes
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,  meta = (AllowPrivateAccess = "true"), Category = "Components")
 	USceneComponent* ProjectileSpawnPoint;
+
+	
 	
 };

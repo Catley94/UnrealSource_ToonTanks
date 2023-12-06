@@ -35,14 +35,14 @@ void ATank::Tick(float DeltaTime)
 		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
 		FVector HitLocation = HitResult.ImpactPoint;
 
-		// DrawDebugSphere(
-		// GetWorld(),
-		// HitResult.ImpactPoint,
-		// 100.f,
-		// 12,
-		// FColor::Blue,
-		// false,
-		// -1.f);
+		DrawDebugSphere(
+		GetWorld(),
+		HitResult.ImpactPoint,
+		100.f,
+		12,
+		FColor::Blue,
+		false,
+		-1.f);
 
 		RotateTurret(HitLocation);
 	}
@@ -55,7 +55,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
-	
+	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ABasePawn::Fire);
 }
 
 
