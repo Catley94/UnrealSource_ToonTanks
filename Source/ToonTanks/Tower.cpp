@@ -47,6 +47,7 @@ bool ATower::InFireRange() const
 		float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
 		if(Distance <= FireRange)
 		{
+			//Hello
 			return true;
 		}
 	}
