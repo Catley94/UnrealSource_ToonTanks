@@ -40,6 +40,14 @@ void ATower::Tick(float DeltaTime)
 	}
 }
 
+void ATower::HandleDestruction()
+{
+	Super::HandleDestruction();
+	Destroy();
+	// Hide Tank
+	// Delete Tank
+}
+
 bool ATower::InFireRange() const
 {
 	if(Tank)

@@ -28,6 +28,8 @@ public:
 	int32 EditInstanceOnlyInt32 = 52;
 
 	void Fire();
+
+	void HandleDestruction();
 	
 protected:
 

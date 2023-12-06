@@ -21,7 +21,7 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
 	
 }
 
@@ -29,10 +29,10 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(PlayerControllerRef != nullptr)
+	if(TankPlayerController != nullptr)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
+		TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
 		FVector HitLocation = HitResult.ImpactPoint;
 
 		DrawDebugSphere(
@@ -47,6 +47,16 @@ void ATank::Tick(float DeltaTime)
 		RotateTurret(HitLocation);
 	}
 }
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+	// Hide Tank
+	// Delete Tank
+}
+
 
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -76,6 +86,6 @@ void ATank::Turn(float Value)
 
 void ATank::OnTakeAnyDamage()
 {
-	UE_LOG(LogTemp, Warning, TEXT("DAMAGE %s"), *GetName());
+	UE_LOG(LogTemp, Warning, TEXT("DAMA GE %s"), *GetName());
 }
 
