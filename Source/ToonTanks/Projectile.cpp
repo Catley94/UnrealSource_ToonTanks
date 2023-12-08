@@ -51,6 +51,7 @@ void AProjectile::OnHit(UPrimitiveComponent* thisComp, AActor* ActorHit, UPrimit
 		// UE_LOG(LogTemp, Warning, TEXT("OTHER ACTOR: %s"), *ActorHit->GetName());
 		// UE_LOG(LogTemp, Warning, TEXT("OTHER COMP: %s"), *CompHit->GetName());
 		UGameplayStatics::ApplyDamage(ActorHit, Damage, MyOwner->GetInstigatorController(), this, UDamageType::StaticClass());
+		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation());
 		Destroy();
 	}
 

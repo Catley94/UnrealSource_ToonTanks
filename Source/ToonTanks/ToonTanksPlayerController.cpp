@@ -13,5 +13,6 @@ void AToonTanksPlayerController::SetPlayerEnabledState(bool bPlayerEnabled)
 		GetPawn()->DisableInput(this);
 	}
 	APlayerController::bShowMouseCursor = bPlayerEnabled;
+	
 }
 

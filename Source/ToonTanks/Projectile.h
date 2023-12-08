@@ -36,4 +36,7 @@ private:
 	
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* thisComp, AActor* ActorHit, UPrimitiveComponent* CompHit, FVector NormalImpulse, const FHitResult& Hit);
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class UParticleSystem* HitParticles;
 };
