@@ -43,7 +43,11 @@ void AProjectile::OnHit(UPrimitiveComponent* thisComp, AActor* ActorHit, UPrimit
 {
 
 	AActor* MyOwner = GetOwner();
-	if(MyOwner == nullptr) return;
+	if(MyOwner == nullptr)
+	{
+		Destroy();
+		return;
+	}
 	if(ActorHit && ActorHit != this && ActorHit != MyOwner)
 	{		
 		// UE_LOG(LogTemp, Warning, TEXT("HIT"));
@@ -51,9 +55,9 @@ void AProjectile::OnHit(UPrimitiveComponent* thisComp, AActor* ActorHit, UPrimit
 		// UE_LOG(LogTemp, Warning, TEXT("OTHER ACTOR: %s"), *ActorHit->GetName());
 		// UE_LOG(LogTemp, Warning, TEXT("OTHER COMP: %s"), *CompHit->GetName());
 		UGameplayStatics::ApplyDamage(ActorHit, Damage, MyOwner->GetInstigatorController(), this, UDamageType::StaticClass());
-		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation());
-		Destroy();
+		if(HitParticles) UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
 	}
+	Destroy();
 
 }
 
