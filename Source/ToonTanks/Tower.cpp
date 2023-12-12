@@ -14,15 +14,15 @@ void ATower::BeginPlay()
 	
 	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 
-	DrawDebugSphere(
-		GetWorld(),
-		GetActorLocation(),
-		FireRange,
-		12,
-		FColor::Red,
-		true,
-		-1.f
-	);
+	// DrawDebugSphere(
+	// 	GetWorld(),
+	// 	GetActorLocation(),
+	// 	FireRange,
+	// 	12,
+	// 	FColor::Red,
+	// 	true,
+	// 	-1.f
+	// );
 
 	GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &ATower::CheckFireCondition, FireRate, true);
 }
