@@ -55,6 +55,7 @@ void ATank::HandleDestruction()
 	SetActorTickEnabled(false);
 	// Hide Tank
 	// Delete Tank
+	bAlive = false;
 }
 
 

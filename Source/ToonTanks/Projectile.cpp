@@ -61,9 +61,20 @@ void AProjectile::OnHit(UPrimitiveComponent* thisComp, AActor* ActorHit, UPrimit
 		// UE_LOG(LogTemp, Warning, TEXT("OTHER ACTOR: %s"), *ActorHit->GetName());
 		// UE_LOG(LogTemp, Warning, TEXT("OTHER COMP: %s"), *CompHit->GetName());
 		UGameplayStatics::ApplyDamage(ActorHit, Damage, MyOwner->GetInstigatorController(), this, UDamageType::StaticClass());
-		if(HitParticles) UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
-		if(HitSound) UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
-		if(HitCameraShakeClass) GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
+		if(HitParticles)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
+		}
+		
+		if(HitSound)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+		}
+		
+		if(HitCameraShakeClass)
+		{
+			GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
+		}
 		
 	}
 	Destroy();
