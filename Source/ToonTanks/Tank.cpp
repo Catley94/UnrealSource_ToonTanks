@@ -76,6 +76,7 @@ void ATank::Move(float Value)
 	// X * DeltaTime * Speed
 	DeltaLocation.X = Value * TankSpeed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalOffset(DeltaLocation, true);
+	AddMovementInput(GetActorForwardVector(), Value);
 }
 
 void ATank::Turn(float Value)
