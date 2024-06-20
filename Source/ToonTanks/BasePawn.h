@@ -31,9 +31,10 @@ public:
 
 	void HandleDestruction();
 	
+	void RotateTurret(FVector LookAtTarget);	
+
 protected:
 
-	void RotateTurret(FVector LookAtTarget);	
 
 	
 	
