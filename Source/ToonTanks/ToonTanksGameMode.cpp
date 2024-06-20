@@ -6,6 +6,7 @@
 #include "Tank.h"
 #include "ToonTanksPlayerController.h"
 #include "Tower.h"
+#include "EnemyTank.h"
 
 void AToonTanksGameMode::BeginPlay()
 {
@@ -38,6 +39,10 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 		{
 			GameOver(true);
 		}
+	}
+	else if (AEnemyTank* DestroyedAITank = Cast<AEnemyTank>(DeadActor))
+	{
+		DestroyedAITank->HandleDestruction();
 	}
 	
 	// Check what type of Actor died. If turret, tally. If Player -> go to lose condition.
