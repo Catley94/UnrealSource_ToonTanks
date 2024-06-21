@@ -7,6 +7,8 @@
 #include "ToonTanksPlayerController.h"
 #include "Tower.h"
 #include "EnemyTank.h"
+#include <AIController.h>
+#include "Perception/AIPerceptionComponent.h"
 
 void AToonTanksGameMode::BeginPlay()
 {

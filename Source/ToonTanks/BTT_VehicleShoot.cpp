@@ -7,6 +7,8 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include <Kismet/GameplayStatics.h>
 
+#include "Tank.h"
+
 UBTT_VehicleShoot::UBTT_VehicleShoot()
 {
     NodeName = "Shoot";
@@ -29,10 +31,15 @@ EBTNodeResult::Type UBTT_VehicleShoot::ExecuteTask(UBehaviorTreeComponent& Owner
     APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
     if (PlayerPawn != nullptr)
     {
-        FVector PlayerLocation = PlayerPawn->GetActorLocation();
-
-        AITank->RotateTurret(PlayerLocation);
-        AITank->Fire();
+        //TODO: Check if PlayerPawn is dead, then return EBTNodeResult::Failed;
+        ATank* Tank = Cast<ATank>(PlayerPawn);
+        if(Tank->bAlive)
+        {
+            FVector PlayerLocation = PlayerPawn->GetActorLocation();
+            AITank->RotateTurret(PlayerLocation);
+            AITank->Fire();
+            UE_LOG(LogTemp, Log, TEXT("Tank is alive"));
+        }
     }
     return EBTNodeResult::Succeeded;
 }
