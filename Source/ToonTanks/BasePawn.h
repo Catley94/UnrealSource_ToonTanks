@@ -30,7 +30,8 @@ public:
 	void Fire();
 
 	void HandleDestruction();
-	
+
+	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);
 
 protected:

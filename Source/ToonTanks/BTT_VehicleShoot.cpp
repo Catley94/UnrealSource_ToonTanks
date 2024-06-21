@@ -31,14 +31,10 @@ EBTNodeResult::Type UBTT_VehicleShoot::ExecuteTask(UBehaviorTreeComponent& Owner
     APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
     if (PlayerPawn != nullptr)
     {
-        //TODO: Check if PlayerPawn is dead, then return EBTNodeResult::Failed;
-        ATank* Tank = Cast<ATank>(PlayerPawn);
-        if(Tank->bAlive)
+        if(Cast<ATank>(PlayerPawn)->bAlive)
         {
-            FVector PlayerLocation = PlayerPawn->GetActorLocation();
-            AITank->RotateTurret(PlayerLocation);
+            AITank->RotateTurret(PlayerPawn->GetActorLocation());
             AITank->Fire();
-            UE_LOG(LogTemp, Log, TEXT("Tank is alive"));
         }
     }
     return EBTNodeResult::Succeeded;
