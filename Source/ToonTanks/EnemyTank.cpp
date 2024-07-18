@@ -12,6 +12,7 @@ void AEnemyTank::HandleDestruction()
 	Super::HandleDestruction();
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
+	bAlive = false;
 	// Hide Tank
 	// Delete Tank
     // Get the AI controller

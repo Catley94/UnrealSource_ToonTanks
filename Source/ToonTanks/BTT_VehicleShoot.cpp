@@ -36,6 +36,11 @@ EBTNodeResult::Type UBTT_VehicleShoot::ExecuteTask(UBehaviorTreeComponent& Owner
             AITank->RotateTurret(PlayerPawn->GetActorLocation());
             AITank->Fire();
         }
+        else
+        {
+            //Clear 
+            return EBTNodeResult::Failed;
+        }
     }
     return EBTNodeResult::Succeeded;
 }

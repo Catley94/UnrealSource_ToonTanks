@@ -35,8 +35,6 @@ public:
 	void OnTakeAnyDamage();
 
 	APlayerController* GetTankPlayerController() const { return TankPlayerController; }
-
-	bool bAlive = true;
 	
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")

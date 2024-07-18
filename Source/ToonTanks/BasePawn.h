@@ -27,12 +27,16 @@ public:
 	UPROPERTY(EditInstanceOnly)
 	int32 EditInstanceOnlyInt32 = 52;
 
+	UFUNCTION(BlueprintCallable)
 	void Fire();
 
 	void HandleDestruction();
 
 	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);
+
+	UPROPERTY(BlueprintReadWrite, Category="Status")
+	bool bAlive = true;
 
 protected:
 

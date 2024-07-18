@@ -3,6 +3,8 @@
 
 #include "BTD_IsInShootRange.h"
 #include "AIController.h"
+#include "EnemyTank.h"
+#include "Tank.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
 UBTD_IsInShootRange::UBTD_IsInShootRange()
@@ -19,7 +21,7 @@ bool UBTD_IsInShootRange::CalculateRawConditionValue(UBehaviorTreeComponent& Own
         return false;
     }
 
-    APawn* AIPawn = AIController->GetPawn();
+APawn* AIPawn = AIController->GetPawn();
     if (AIPawn == nullptr)
     {
         return false;
@@ -36,6 +38,26 @@ bool UBTD_IsInShootRange::CalculateRawConditionValue(UBehaviorTreeComponent& Own
     UObject* TargetObject = BlackboardComp->GetValueAsObject(TargetKey.SelectedKeyName);
     AActor* TargetActor = Cast<AActor>(TargetObject);
     if (TargetActor == nullptr)
+    {
+        return false;
+    }
+
+    ATank* PlayerTank = Cast<ATank>(TargetActor);
+    if(PlayerTank == nullptr)
+    {
+        return false;
+    }
+    if(!PlayerTank->bAlive)
+    {
+        return false;
+    }
+
+    AEnemyTank* EnemyAITank = Cast<AEnemyTank>(TargetActor);
+    if(EnemyAITank == nullptr)
+    {
+        return false;
+    }
+    if(!EnemyAITank->bAlive)
     {
         return false;
     }
